@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Diagram - Admin</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .mermaid { margin-top: 20px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>Activity Diagram Admin - Tambah Data Santri</h2>
+    <p><i>Tips: Klik kanan pada gambar diagram di bawah ini lalu pilih <b>"Save image as..."</b> (Simpan gambar sebagai) untuk menyimpannya sebagai file PNG/JPEG.</i></p>
+    
+    <div class="mermaid">
+flowchart TD
+    Start((Mulai))
+    End((Selesai))
+
+    subgraph Admin ["🧑‍💼 Alur Admin"]
+        direction TB
+        A1[Membuka Menu Data Santri]
+        A2[Mengklik Tombol 'Tambah Santri']
+        A3[Mengisi Form Data Santri]
+        A4[Mengklik Tombol 'Simpan']
+    end
+
+    subgraph Sistem ["💻 Alur Sistem e-Santri"]
+        direction TB
+        S1[Menampilkan Tabel Data Santri]
+        S2[Menampilkan Form Tambah Santri]
+        S3{Validasi Data?}
+        S4[Menampilkan Pesan Error/Validasi]
+        S5[Menyimpan Data ke Database]
+        S6[Menampilkan Pesan Sukses & Kembali ke Tabel]
+    end
+
+    Start --> A1
+    A1 --> S1
+    S1 --> A2
+    A2 --> S2
+    S2 --> A3
+    A3 --> A4
+    A4 --> S3
+    
+    S3 -- "Data Tidak Lengkap" --> S4
+    S4 --> A3
+    
+    S3 -- "Data Valid" --> S5
+    S5 --> S6
+    S6 --> End
+    </div>
+</body>
+</html>

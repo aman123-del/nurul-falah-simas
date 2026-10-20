@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sequence Diagram - Login</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .mermaid { margin-top: 20px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>Sequence Diagram - Proses Login (Google OAuth & Manual)</h2>
+    <p><i>Tips: Klik kanan pada gambar diagram di bawah ini lalu pilih <b>"Save image as..."</b> (Simpan gambar sebagai) untuk menyimpannya sebagai file PNG/JPEG.</i></p>
+    
+    <div class="mermaid">
+sequenceDiagram
+    actor U as Pengguna (Admin/Bendahara)
+    participant UI as Halaman Login
+    participant C as AuthController
+    participant G as Google OAuth
+    participant DB as Database
+
+    U->>UI: Membuka Halaman Login
+    alt Login Manual
+        U->>UI: Memasukkan Email & Password
+        UI->>C: POST /login (Credentials)
+        C->>DB: Validasi Pengguna
+        alt Kredensial Valid
+            DB-->>C: Data Pengguna
+            C-->>UI: Redirect ke Dashboard
+            UI-->>U: Menampilkan Dashboard
+        else Kredensial Tidak Valid
+            DB-->>C: Pengguna Tidak Ditemukan
+            C-->>UI: Redirect Kembali dengan Error
+            UI-->>U: Menampilkan Pesan Error
+        end
+    else Login dengan Google
+        U->>UI: Klik "Login dengan Google"
+        UI->>C: GET /auth/google
+        C->>G: Redirect ke Google Consent
+        U->>G: Memilih Akun & Konfirmasi
+        G-->>C: Callback dengan Google Token
+        C->>DB: Cari Pengguna via Email/Google ID
+        alt Pengguna Terdaftar
+            DB-->>C: Data Pengguna
+            C-->>UI: Redirect ke Dashboard
+            UI-->>U: Menampilkan Dashboard
+        else Pengguna Tidak Terdaftar
+            DB-->>C: Null
+            C-->>UI: Redirect ke Login dengan Error
+            UI-->>U: Menampilkan Pesan "Akses Ditolak"
+        end
+    end
+    </div>
+</body>
+</html>

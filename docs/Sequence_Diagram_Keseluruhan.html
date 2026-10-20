@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sequence Diagram Keseluruhan - e-Santri</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .mermaid { margin-top: 20px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>Sequence Diagram Keseluruhan - Sistem e-Santri</h2>
+    <p><i>Diagram ini mencakup proses utama dalam sistem: Login, Pengelolaan Data Santri oleh Admin, dan Pengelolaan Syahriyah oleh Bendahara.</i></p>
+    <p><i>Tips: Klik kanan pada gambar diagram di bawah ini lalu pilih <b>"Save image as..."</b> (Simpan gambar sebagai) untuk menyimpannya sebagai file PNG/JPEG.</i></p>
+    
+    <div class="mermaid">
+sequenceDiagram
+    autonumber
+    actor A as Admin
+    actor B as Bendahara
+    participant UI as Antarmuka e-Santri (Web)
+    participant Server as Server (Laravel)
+    participant DB as Database (MySQL)
+
+    rect rgb(240, 248, 255)
+        Note right of A: 1. Proses Autentikasi (Login)
+        A->>UI: Input Kredensial Login
+        B->>UI: Input Kredensial Login
+        UI->>Server: POST /login (Kirim Data User)
+        Server->>DB: Validasi Email & Password / Google ID
+        DB-->>Server: Response Valid/Invalid
+        Server-->>UI: Redirect ke Dashboard
+    end
+
+    rect rgb(255, 245, 230)
+        Note right of A: 2. Proses Pengelolaan Data Santri (Oleh Admin)
+        A->>UI: Mengakses Menu Data Santri
+        UI->>Server: GET /santri
+        Server->>DB: Query Ambil Data Santri
+        DB-->>Server: Mengembalikan Data Santri
+        Server-->>UI: Menampilkan Tabel Data Santri
+        A->>UI: Submit Form (Tambah/Edit/Hapus Data)
+        UI->>Server: POST/PUT/DELETE /santri
+        Server->>DB: Eksekusi Query (Insert/Update/Delete)
+        DB-->>Server: Status Query Sukses
+        Server-->>UI: Response Pesan Sukses (Berhasil Disimpan)
+    end
+
+    rect rgb(230, 255, 230)
+        Note right of B: 3. Proses Pembayaran Syahriyah (Oleh Bendahara)
+        B->>UI: Mengakses Menu Syahriyah
+        UI->>Server: GET /syahriyah
+        Server->>DB: Query Data Santri & Status Pembayaran
+        DB-->>Server: Mengembalikan Data Checklist
+        Server-->>UI: Menampilkan Tabel Checklist Bulan
+        B->>UI: Mencentang Checklist Pembayaran
+        UI->>Server: POST Update Status Pembayaran (AJAX)
+        Server->>DB: Update/Insert Tabel Syahriyah
+        DB-->>Server: Status Query Sukses
+        Server-->>UI: Response Sukses (Checklist Tersimpan)
+    end
+    </div>
+</body>
+</html>

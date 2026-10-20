@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perancangan Antarmuka (Wireframe B&W) - Sistem e-Santri</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #333333;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .wireframe-card {
+            border: 2px solid #000000;
+            padding: 15px;
+            margin-bottom: 40px;
+            background-color: #ffffff;
+            page-break-inside: avoid;
+        }
+        .wireframe-card h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+        }
+        /* Draw.io Style Browser Frame */
+        .window-frame {
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            margin-top: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        .window-header {
+            background-color: #f1f5f9;
+            border-bottom: 2px solid #000000;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .window-dots {
+            display: flex;
+            gap: 5px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid #000000;
+            background-color: #ffffff;
+        }
+        .address-bar {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            padding: 3px 10px;
+            border-radius: 4px;
+            flex-grow: 1;
+            font-size: 11px;
+            color: #333;
+        }
+        .window-body {
+            padding: 15px;
+            min-height: 280px;
+            background-color: #ffffff;
+        }
+
+        /* Common UI Wireframe Elements */
+        .wf-btn {
+            border: 1.5px solid #000000;
+            padding: 5px 12px;
+            background-color: #f8fafc;
+            font-weight: bold;
+            display: inline-block;
+            border-radius: 3px;
+        }
+        .wf-btn-dark {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .wf-input {
+            border: 1.5px solid #000000;
+            padding: 6px 10px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 3px;
+            margin-top: 4px;
+        }
+        .wf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 11px;
+        }
+        .wf-table th, .wf-table td {
+            border: 1px solid #000000;
+            padding: 6px 8px;
+            text-align: left;
+        }
+        .wf-table th {
+            background-color: #f1f5f9;
+        }
+        .wf-badge {
+            border: 1px solid #000000;
+            padding: 2px 6px;
+            font-size: 10px;
+            border-radius: 3px;
+        }
+        .wf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .wf-box {
+            border: 1.5px solid #000000;
+            padding: 12px;
+            background-color: #ffffff;
+        }
+        .layout-app {
+            display: flex;
+            min-height: 320px;
+            border: 1px solid #000000;
+        }
+        .layout-sidebar {
+            width: 180px;
+            border-right: 2px solid #000000;
+            background-color: #f8fafc;
+            padding: 10px;
+        }
+        .layout-main {
+            flex-grow: 1;
+            padding: 15px;
+        }
+        .nav-item {
+            padding: 8px 10px;
+            border: 1px solid transparent;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        .nav-item.active {
+            border: 1.5px solid #000000;
+            background-color: #e2e8f0;
+            font-weight: bold;
+        }
+        .desc {
+            font-size: 13px;
+            color: #000000;
+            margin-top: 12px;
+            line-height: 1.5;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BAB IV - PERANCANGAN ANTARMUKA (INTERFACE WIREFRAME)</h1>
+    <p class="subtitle">Dokumen Perancangan Wireframe Hitam-Putih (Draw.io Style) Sistem e-Santri Nurul Falah</p>
+
+    <!-- 1. Landing Page Sebelum Login -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.1 Perancangan Antarmuka Halaman Utama / Landing Page (Sebelum Login)</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/</div>
+                <span class="wf-btn">Login Santri/Pengurus</span>
+            </div>
+            <div class="window-body">
+                <!-- Hero Section -->
+                <div style="border: 2px dashed #000; padding: 25px; text-align: center; background-color: #f8fafc; margin-bottom: 15px;">
+                    <h2 style="margin: 0 0 8px 0; font-size: 18px;">Selamat Datang di Sistem e-Santri Nurul Falah</h2>
+                    <p style="margin: 0; font-size: 12px; color: #444;">Portal Informasi Manajemen Santri, Berita Kegiatan, dan Layanan Informasi Pesantren</p>
+                    <div style="margin-top: 12px;">
+                        <span class="wf-btn wf-btn-dark">Lihat Berita</span>
+                        <span class="wf-btn">Galeri Kegiatan</span>
+                    </div>
+                </div>
+                <!-- Content Grid -->
+                <div class="wf-grid">
+                    <div class="wf-box">
+                        <div style="height: 60px; border: 1px dashed #000; display:flex; align-items:center; justify-content:center; margin-bottom: 8px;">[ GAMBAR BERITA ]</div>
+                        <b>Pengajian Akbar Pesantren</b>
+                        <p style="font-size: 10px; margin: 4px 0 0 0;">Pengajian rutin bulanan bersama para alumni dan wali santri...</p>
+                    </div>
+                    <div class="wf-box">
+                        <div style="height: 60px; border: 1px dashed #000; display:flex; align-items:center; justify-content:center; margin-bottom: 8px;">[ GAMBAR BERITA ]</div>
+                        <b>Penerimaan Santri Baru</b>
+                        <p style="font-size: 10px; margin: 4px 0 0 0;">Informasi pendaftaran dan alur seleksi penerimaan santri baru tahun ajaran 2026/2027...</p>
+                    </div>
+                    <div class="wf-box">
+                        <div style="height: 60px; border: 1px dashed #000; display:flex; align-items:center; justify-content:center; margin-bottom: 8px;">[ FOTO GALERI ]</div>
+                        <b>Kegiatan Ekstrakurikuler</b>
+                        <p style="font-size: 10px; margin: 4px 0 0 0;">Dokumentasi kegiatan Seni Hadrah dan Tahfidz Al-Qur'an santri...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman utama publik (sebelum login) yang dapat diakses oleh masyarakat umum, wali santri, dan calon santri untuk melihat informasi berita, pengumuman, galeri kegiatan, serta tombol masuk ke sistem e-Santri.</p>
+    </div>
+
+    <!-- 2. Halaman Login -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.2 Perancangan Antarmuka Halaman Login</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/login</div>
+            </div>
+            <div class="window-body" style="display: flex; justify-content: center; align-items: center; min-height: 320px;">
+                <div class="wf-box" style="width: 340px; padding: 20px; text-align: center;">
+                    <div style="width: 50px; height: 50px; border: 2px solid #000; border-radius: 50%; margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center; font-weight: bold;">[LOG]</div>
+                    <h3 style="margin: 0 0 5px 0; font-size: 16px;">e-Santri Nurul Falah</h3>
+                    <p style="font-size: 11px; margin-bottom: 15px;">Masukkan Email & Password Akun Anda</p>
+                    <div style="text-align: left; margin-bottom: 10px;">
+                        <label style="font-size: 11px; font-weight: bold;">Email Address:</label>
+                        <input type="text" class="wf-input" placeholder="contoh@nurulfalah.com">
+                    </div>
+                    <div style="text-align: left; margin-bottom: 15px;">
+                        <label style="font-size: 11px; font-weight: bold;">Password:</label>
+                        <input type="password" class="wf-input" placeholder="••••••••">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; margin-bottom: 15px;">
+                        <label><input type="checkbox"> Ingat Saya</label>
+                        <a href="#" style="color: #000;">Lupa Password?</a>
+                    </div>
+                    <button class="wf-btn wf-btn-dark" style="width: 100%; margin-bottom: 10px; cursor: pointer;">MASUK KE SISTEM</button>
+                    <div style="border-top: 1px dashed #000; margin: 10px 0; padding-top: 10px;">
+                        <button class="wf-btn" style="width: 100%; font-size: 11px;">G  Masuk dengan Google SSO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman login yang digunakan oleh Pengurus, Admin, Bendahara, dan Santri untuk memverifikasi hak akses ke dalam aplikasi e-Santri.</p>
+    </div>
+
+    <!-- 3. Halaman Dashboard Utama -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.3 Perancangan Antarmuka Halaman Dashboard Utama</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/dashboard</div>
+                <div style="font-weight: bold; font-size: 11px;">[ User: Admin / Bendahara ]</div>
+            </div>
+            <div class="layout-app">
+                <div class="layout-sidebar">
+                    <div style="font-weight: bold; padding-bottom: 10px; border-bottom: 1.5px solid #000; margin-bottom: 10px;">e-Santri Panel</div>
+                    <div class="nav-item active">📊 Dashboard</div>
+                    <div class="nav-item">👥 Data Santri</div>
+                    <div class="nav-item">💳 Syahriyah (SPP)</div>
+                    <div class="nav-item">📰 Kelola Berita</div>
+                    <div class="nav-item">🖼️ Galeri Kegiatan</div>
+                    <div class="nav-item">🔔 Notifikasi</div>
+                    <div class="nav-item">⚙️ Pengaturan</div>
+                </div>
+                <div class="layout-main">
+                    <h3 style="margin: 0 0 10px 0; border: none; font-size: 16px;">Ringkasan Dashboard</h3>
+                    <div class="wf-grid" style="margin-bottom: 15px;">
+                        <div class="wf-box">
+                            <span style="font-size: 11px;">TOTAL SANTRI</span>
+                            <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">248 Santri</div>
+                        </div>
+                        <div class="wf-box">
+                            <span style="font-size: 11px;">SYAHRIYAH LUNAS</span>
+                            <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">210 Santri</div>
+                        </div>
+                        <div class="wf-box">
+                            <span style="font-size: 11px;">TOTAL BERITA</span>
+                            <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">18 Postingan</div>
+                        </div>
+                    </div>
+                    <div class="wf-box">
+                        <b>Aktivitas Terbaru Sistem</b>
+                        <table class="wf-table">
+                            <thead>
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Pengguna</th>
+                                    <th>Aktivitas</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>05/09/2026 07:30</td>
+                                    <td>Bendahara Utama</td>
+                                    <td>Meng-input pembayaran Syahriyah a.n Ahmad Dahlan</td>
+                                    <td><span class="wf-badge">Berhasil</span></td>
+                                </tr>
+                                <tr>
+                                    <td>05/09/2026 06:15</td>
+                                    <td>Admin Sistem</td>
+                                    <td>Menambahkan santri baru (NIS: 20260012)</td>
+                                    <td><span class="wf-badge">Berhasil</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman dashboard utama setelah login yang menyajikan ikhtisar statistik santri, status pembayaran iuran Syahriyah, serta tabel log aktivitas sistem e-Santri secara real-time.</p>
+    </div>
+
+    <!-- 4. Halaman Data Santri -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.4 Perancangan Antarmuka Halaman Data Santri</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/santri</div>
+            </div>
+            <div class="layout-app">
+                <div class="layout-sidebar">
+                    <div style="font-weight: bold; padding-bottom: 10px; border-bottom: 1.5px solid #000; margin-bottom: 10px;">e-Santri Panel</div>
+                    <div class="nav-item">📊 Dashboard</div>
+                    <div class="nav-item active">👥 Data Santri</div>
+                    <div class="nav-item">💳 Syahriyah (SPP)</div>
+                    <div class="nav-item">📰 Kelola Berita</div>
+                    <div class="nav-item">⚙️ Pengaturan</div>
+                </div>
+                <div class="layout-main">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h3 style="margin: 0; border: none; font-size: 16px;">Kelola Data Santri</h3>
+                        <span class="wf-btn wf-btn-dark">+ Tambah Santri Baru</span>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <input type="text" class="wf-input" placeholder="🔍 Cari NIS / Nama Santri..." style="width: 220px; margin: 0;">
+                        <select class="wf-input" style="width: 140px; margin: 0;"><option>Filter Status: Aktif</option></select>
+                        <span class="wf-btn">Export PDF</span>
+                    </div>
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>NIS</th>
+                                <th>Nama Lengkap</th>
+                                <th>L/P</th>
+                                <th>Alamat</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>20260001</td>
+                                <td>Ahmad Fauzi</td>
+                                <td>Laki-laki</td>
+                                <td>Cirebon, Jawa Barat</td>
+                                <td><span class="wf-badge">Aktif</span></td>
+                                <td>[Detail] [Edit] [Hapus]</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>20260002</td>
+                                <td>Siti Nurhaliza</td>
+                                <td>Perempuan</td>
+                                <td>Kuningan, Jawa Barat</td>
+                                <td><span class="wf-badge">Aktif</span></td>
+                                <td>[Detail] [Edit] [Hapus]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman data santri yang menampilkan daftar lengkap santri beserta fitur pencarian, filter status santri, pencetakan berkas PDF, dan aksi manajemen data santri.</p>
+    </div>
+
+    <!-- 5. Halaman Form Input Santri -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.5 Perancangan Antarmuka Halaman Formulir Input Data Santri</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/santri/create</div>
+            </div>
+            <div class="layout-app">
+                <div class="layout-sidebar">
+                    <div style="font-weight: bold; padding-bottom: 10px; border-bottom: 1.5px solid #000; margin-bottom: 10px;">e-Santri Panel</div>
+                    <div class="nav-item">📊 Dashboard</div>
+                    <div class="nav-item active">👥 Data Santri</div>
+                    <div class="nav-item">💳 Syahriyah (SPP)</div>
+                </div>
+                <div class="layout-main">
+                    <h3 style="margin: 0 0 10px 0; border: none; font-size: 16px;">Formulir Tambah Data Santri</h3>
+                    <div class="wf-box">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <div>
+                                <label style="font-size: 10px; font-weight: bold;">NIS (Nomor Induk Santri):</label>
+                                <input type="text" class="wf-input" placeholder="Masukkan NIS">
+                            </div>
+                            <div>
+                                <label style="font-size: 10px; font-weight: bold;">NIK (KTP/KK):</label>
+                                <input type="text" class="wf-input" placeholder="Masukkan NIK">
+                            </div>
+                            <div>
+                                <label style="font-size: 10px; font-weight: bold;">Nama Lengkap Santri:</label>
+                                <input type="text" class="wf-input" placeholder="Nama Lengkap">
+                            </div>
+                            <div>
+                                <label style="font-size: 10px; font-weight: bold;">Jenis Kelamin:</label>
+                                <select class="wf-input"><option>Laki-laki</option><option>Perempuan</option></select>
+                            </div>
+                            <div>
+                                <label style="font-size: 10px; font-weight: bold;">Nama Ayah Kandung:</label>
+                                <input type="text" class="wf-input" placeholder="Nama Ayah">
+                            </div>
+                            <div>
+                                <label style="font-size: 10px; font-weight: bold;">Nama Ibu Kandung:</label>
+                                <input type="text" class="wf-input" placeholder="Nama Ibu">
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <label style="font-size: 10px; font-weight: bold;">Foto Profil Santri:</label>
+                            <input type="file" class="wf-input">
+                        </div>
+                        <div style="margin-top: 15px; text-align: right;">
+                            <span class="wf-btn">Batal</span>
+                            <span class="wf-btn wf-btn-dark">SIMPAN DATA SANTRI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman formulir input data santri baru yang memuat isian identitas diri santri, data kependudukan, data orang tua/wali, serta fitur unggah berkas foto profil.</p>
+    </div>
+
+    <!-- 6. Halaman Syahriyah -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.6 Perancangan Antarmuka Halaman Kelola Pembayaran Syahriyah</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/syahriyah</div>
+            </div>
+            <div class="layout-app">
+                <div class="layout-sidebar">
+                    <div style="font-weight: bold; padding-bottom: 10px; border-bottom: 1.5px solid #000; margin-bottom: 10px;">e-Santri Panel</div>
+                    <div class="nav-item">📊 Dashboard</div>
+                    <div class="nav-item">👥 Data Santri</div>
+                    <div class="nav-item active">💳 Syahriyah (SPP)</div>
+                </div>
+                <div class="layout-main">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h3 style="margin: 0; border: none; font-size: 16px;">Kelola Pembayaran Syahriyah (SPP)</h3>
+                        <span class="wf-btn wf-btn-dark">+ Input Pembayaran</span>
+                    </div>
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Santri</th>
+                                <th>Bulan / Tahun</th>
+                                <th>Nominal (Rp)</th>
+                                <th>Status</th>
+                                <th>Tanggal Bayar</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ahmad Fauzi</td>
+                                <td>September 2026</td>
+                                <td>Rp 150.000</td>
+                                <td><span class="wf-badge">LUNAS</span></td>
+                                <td>02/09/2026</td>
+                                <td>[Cetak Kwitansi]</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Muhammad Rizky</td>
+                                <td>September 2026</td>
+                                <td>Rp 150.000</td>
+                                <td><span class="wf-badge">BELUM LUNAS</span></td>
+                                <td>-</td>
+                                <td>[Bayar]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman kelola iuran Syahriyah (SPP) santri yang digunakan oleh Bendahara untuk memverifikasi pembayaran bulanan, melihat status lunas, dan mencetak kwitansi pembayaran.</p>
+    </div>
+
+    <!-- 7. Halaman Notifikasi -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.7 Perancangan Antarmuka Halaman Notifikasi Sistem</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/notifications</div>
+            </div>
+            <div class="layout-app">
+                <div class="layout-sidebar">
+                    <div style="font-weight: bold; padding-bottom: 10px; border-bottom: 1.5px solid #000; margin-bottom: 10px;">e-Santri Panel</div>
+                    <div class="nav-item">📊 Dashboard</div>
+                    <div class="nav-item active">🔔 Notifikasi</div>
+                    <div class="nav-item">⚙️ Pengaturan</div>
+                </div>
+                <div class="layout-main">
+                    <h3 style="margin: 0 0 10px 0; border: none; font-size: 16px;">Daftar Notifikasi & Pengumuman Sistem</h3>
+                    <div class="wf-box" style="margin-bottom: 8px;">
+                        <b>[PEMBERITAHUAN SYAHRIYAH]</b>
+                        <p style="font-size: 11px; margin: 4px 0 0 0;">Pembayaran Syahriyah bulan September 2026 a.n Ahmad Fauzi telah berhasil dikonfirmasi oleh Bendahara.</p>
+                        <span style="font-size: 9px; color: #555;">05 September 2026 - 07:30 WIB</span>
+                    </div>
+                    <div class="wf-box" style="margin-bottom: 8px;">
+                        <b>[PENGUMUMAN BERITA BARU]</b>
+                        <p style="font-size: 11px; margin: 4px 0 0 0;">Artikel Berita "Pengajian Rutin Alumni Pesantren" telah dipublikasikan oleh Admin.</p>
+                        <span style="font-size: 9px; color: #555;">04 September 2026 - 19:45 WIB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman notifikasi yang menyajikan daftar riwayat pemberitahuan sistem seperti status pembayaran iuran, update berita pesantren, dan notifikasi penting akun pengguna.</p>
+    </div>
+
+    <!-- 8. Halaman Pengaturan & Profil -->
+    <div class="wireframe-card">
+        <h3>Gambar 4.8 Perancangan Antarmuka Halaman Pengaturan & Profil Pengguna</h3>
+        <div class="window-frame">
+            <div class="window-header">
+                <div class="window-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div class="address-bar">http://e-santri-nurulfalah.com/profile</div>
+            </div>
+            <div class="layout-app">
+                <div class="layout-sidebar">
+                    <div style="font-weight: bold; padding-bottom: 10px; border-bottom: 1.5px solid #000; margin-bottom: 10px;">e-Santri Panel</div>
+                    <div class="nav-item">📊 Dashboard</div>
+                    <div class="nav-item">🔔 Notifikasi</div>
+                    <div class="nav-item active">⚙️ Pengaturan</div>
+                </div>
+                <div class="layout-main">
+                    <h3 style="margin: 0 0 10px 0; border: none; font-size: 16px;">Pengaturan Akun & Profil</h3>
+                    <div class="wf-box" style="margin-bottom: 10px;">
+                        <b>Informasi Profil Pengguna</b>
+                        <div style="margin-top: 8px;">
+                            <label style="font-size: 10px; font-weight: bold;">Nama Lengkap:</label>
+                            <input type="text" class="wf-input" value="Administrator e-Santri">
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <label style="font-size: 10px; font-weight: bold;">Email Address:</label>
+                            <input type="text" class="wf-input" value="admin@nurulfalah.com">
+                        </div>
+                        <button class="wf-btn wf-btn-dark" style="margin-top: 10px;">Simpan Perubahan Profil</button>
+                    </div>
+                    <div class="wf-box">
+                        <b>Pembaruan Password</b>
+                        <div style="margin-top: 8px;">
+                            <label style="font-size: 10px; font-weight: bold;">Password Lama:</label>
+                            <input type="password" class="wf-input" placeholder="••••••••">
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <label style="font-size: 10px; font-weight: bold;">Password Baru:</label>
+                            <input type="password" class="wf-input" placeholder="••••••••">
+                        </div>
+                        <button class="wf-btn" style="margin-top: 10px;">Ubah Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="desc"><b>Keterangan:</b> Halaman pengaturan akun dan profil pengguna untuk memperbarui nama, email, foto profil, serta kata sandi (*password*) pengguna pada aplikasi e-Santri.</p>
+    </div>
+
+</body>
+</html>

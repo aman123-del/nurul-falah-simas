@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Diagram - Bendahara</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .mermaid { margin-top: 20px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>Activity Diagram Bendahara - Pembayaran Syahriyah</h2>
+    <p><i>Tips: Klik kanan pada gambar diagram di bawah ini lalu pilih <b>"Save image as..."</b> (Simpan gambar sebagai) untuk menyimpannya sebagai file PNG/JPEG.</i></p>
+    
+    <div class="mermaid">
+flowchart TD
+    Start((Mulai))
+    End((Selesai))
+
+    subgraph Bendahara ["💵 Alur Bendahara"]
+        direction TB
+        B1[Membuka Menu Syahriyah]
+        B2[Mencari/Memilih Santri]
+        B3[Mencentang Bulan Pembayaran]
+        B4[Konfirmasi Pembayaran]
+    end
+
+    subgraph Sistem ["💻 Alur Sistem e-Santri"]
+        direction TB
+        S1[Menampilkan Halaman Syahriyah & Daftar Santri]
+        S2[Memfilter Data Santri]
+        S3[Menampilkan Modal Konfirmasi]
+        S4{Proses Simpan?}
+        S5[Menyimpan Data ke Database]
+        S6[Menampilkan Pesan Gagal]
+        S7[Menampilkan Pesan Sukses & Update Checklist]
+    end
+
+    Start --> B1
+    B1 --> S1
+    S1 --> B2
+    B2 --> S2
+    S2 --> B3
+    B3 --> S3
+    S3 --> B4
+    B4 --> S4
+    
+    S4 -- "Gagal" --> S6
+    S6 --> S1
+    
+    S4 -- "Berhasil" --> S5
+    S5 --> S7
+    S7 --> End
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Diagram - e-Santri</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .mermaid { margin-top: 20px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>Class Diagram - Sistem e-Santri</h2>
+    <p><i>Diagram ini menggambarkan struktur class (Model & Controller utama) yang ada di dalam aplikasi Laravel beserta relasi method-nya.</i></p>
+    <p><i>Tips: Klik kanan pada gambar diagram di bawah ini lalu pilih <b>"Save image as..."</b> (Simpan gambar sebagai) untuk menyimpannya.</i></p>
+    
+    <div class="mermaid">
+classDiagram
+    %% Models
+    class User {
+        +int id
+        +string name
+        +string email
+        +string password
+        +string role
+        +string google_id
+        +santri()
+        +syahriyahs()
+    }
+
+    class Santri {
+        +int id
+        +string nis
+        +string nik
+        +string nama_lengkap
+        +string status
+        +string alamat
+        +user()
+        +syahriyahs()
+    }
+
+    class Syahriyah {
+        +int id
+        +int user_id
+        +int santri_id
+        +string bulan
+        +string tahun
+        +int jumlah
+        +user()
+        +santri()
+        +creator()
+    }
+
+    class Berita {
+        +int id
+        +string judul
+        +string konten
+        +string foto
+    }
+
+    class Galeri {
+        +int id
+        +string foto
+        +string caption
+    }
+
+    %% Controllers
+    class AuthController {
+        +login(Request request)
+        +logout(Request request)
+        +redirectToGoogle()
+        +handleGoogleCallback()
+    }
+
+    class SantriController {
+        +index()
+        +create()
+        +store(Request request)
+        +edit(int id)
+        +update(Request request, int id)
+        +destroy(int id)
+    }
+
+    class SyahriyahController {
+        +index()
+        +update(Request request)
+    }
+
+    %% Relationships (Model to Model)
+    User "1" -- "0..1" Santri : hasOne / belongsTo
+    User "1" -- "0..*" Syahriyah : hasMany
+    Santri "1" -- "0..*" Syahriyah : hasMany
+
+    %% Dependency (Controller to Model)
+    AuthController ..> User : Mengelola Autentikasi
+    SantriController ..> Santri : Mengelola Data Santri
+    SyahriyahController ..> Syahriyah : Mengelola Pembayaran
+    SyahriyahController ..> Santri : Membaca Data Santri
+    </div>
+</body>
+</html>

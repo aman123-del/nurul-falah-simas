@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Pengujian Sistem</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Skenario</th>
+                <th>Kasus Pengujian</th>
+                <th>Hasil yang diharapkan</th>
+                <th>Hasil Pengujian</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">Autentikasi (Login)</td>
+                <td>Mengisi form login dengan email dan password valid atau masuk lewat akun Google</td>
+                <td>Berhasil masuk ke halaman dashboard</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Mengisi form login dengan email atau password yang salah</td>
+                <td>Muncul pesan kesalahan terkait kredensial tidak valid</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Kelola Data Santri (Admin)</td>
+                <td>Admin mengakses halaman Data Santri</td>
+                <td>Menampilkan tabel daftar seluruh data santri</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Admin mengisi form tambah data santri baru (NIS, NIK, Nama Lengkap, dsb)</td>
+                <td>Data santri berhasil tersimpan ke database dan muncul pesan sukses</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Admin melakukan edit atau hapus pada data santri yang ada</td>
+                <td>Data santri berhasil diperbarui atau terhapus dari sistem</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Pembayaran Syahriyah (Bendahara)</td>
+                <td>Bendahara mengakses halaman Pembayaran Syahriyah</td>
+                <td>Menampilkan daftar santri beserta tabel checklist bulan pembayaran</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Bendahara mencentang/menyimpan checklist pembayaran syahriyah bulan tertentu</td>
+                <td>Status pembayaran berhasil diperbarui (tersimpan) ke dalam database</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Berita</td>
+                <td>Pengguna membuka halaman Berita</td>
+                <td>Menampilkan daftar artikel/berita pesantren beserta foto dan kontennya</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td>Galeri</td>
+                <td>Pengguna membuka halaman Galeri</td>
+                <td>Menampilkan galeri foto kegiatan pesantren beserta caption</td>
+                <td>Valid</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

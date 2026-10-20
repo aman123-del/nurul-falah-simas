@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERD Draw.io Style - Sistem e-Santri</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ 
+          startOnLoad: true, 
+          theme: 'neutral',
+          themeVariables: {
+              darkMode: false,
+              background: '#ffffff',
+              primaryColor: '#ffffff',
+              primaryTextColor: '#000000',
+              primaryBorderColor: '#000000',
+              lineColor: '#000000',
+              secondaryColor: '#f4f4f4',
+              tertiaryColor: '#ffffff'
+          }
+      });
+    </script>
+    <style>
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            padding: 30px; 
+            background-color: #ffffff; 
+            color: #000000; 
+            text-align: center; 
+        }
+        h2 { color: #000000; margin-bottom: 5px; font-weight: bold; }
+        p { color: #333333; font-size: 14px; margin-top: 5px; }
+        .box {
+            border: 2px solid #000000;
+            padding: 20px;
+            display: inline-block;
+            max-width: 95%;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+        .mermaid { margin-top: 15px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>GAMBAR: ENTITY RELATIONSHIP DIAGRAM (ERD)</h2>
+    <p>Sistem e-Santri Nurul Falah</p>
+    
+    <div class="box">
+        <div class="mermaid">
+erDiagram
+    USERS {
+        bigint id PK
+        string name
+        string email
+        string password
+        string role
+        string google_id
+        string photo
+    }
+
+    SANTRIS {
+        bigint id PK
+        string nis UK
+        string nik
+        string nama_lengkap
+        string jenis_kelamin
+        string tempat_lahir
+        date tanggal_lahir
+        string no_hp
+        text alamat
+        string status
+        string nama_ayah
+        string nama_ibu
+        string foto
+    }
+
+    SYAHRIYAHS {
+        bigint id PK
+        bigint santri_id FK
+        string bulan
+        string tahun
+        integer jumlah
+        string status
+        date tanggal_bayar
+        string keterangan
+    }
+
+    BERITAS {
+        bigint id PK
+        string judul
+        string slug
+        text konten
+        string kategori
+        string gambar
+        bigint penulis_id FK
+    }
+
+    GALERIS {
+        bigint id PK
+        string judul
+        text deskripsi
+        string file_path
+        string tipe
+    }
+
+    NOTIFICATIONS {
+        string id PK
+        string type
+        string notifiable_type
+        bigint notifiable_id
+        text data
+        timestamp read_at
+    }
+
+    USERS ||--o| SANTRIS : "profil"
+    SANTRIS ||--o{ SYAHRIYAHS : "pembayaran"
+    USERS ||--o{ BERITAS : "penulis"
+    USERS ||--o{ NOTIFICATIONS : "notifikasi"
+        </div>
+    </div>
+</body>
+</html>

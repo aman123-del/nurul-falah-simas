@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flowchart Sistem - e-Santri</title>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        .mermaid { margin-top: 20px; display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h2>Flowchart Sistem Keseluruhan - e-Santri</h2>
+    <p><i>Flowchart ini menggambarkan alur logika pengguna dalam menggunakan sistem dari awal hingga akhir.</i></p>
+    <p><i>Tips: Klik kanan pada gambar diagram di bawah ini lalu pilih <b>"Save image as..."</b> (Simpan gambar sebagai) untuk menyimpannya.</i></p>
+    
+    <div class="mermaid">
+flowchart TD
+    Start(["Mulai Aplikasi"]) --> BukaWeb["Buka Halaman Utama Website"]
+    BukaWeb --> Menu{"Pilih Tindakan"}
+    
+    Menu -- "Lihat Informasi" --> TampilInfo["Melihat Berita & Galeri Pesantren"]
+    Menu -- "Masuk Sistem" --> FormLogin["Akses Halaman Login"]
+    
+    FormLogin --> Input["Input Email & Password / Klik Google Login"]
+    Input --> Validasi{"Cek Kredensial Database?"}
+    
+    Validasi -- "Salah / Tidak Terdaftar" --> PesanGagal["Tampilkan Pesan Error"]
+    PesanGagal --> FormLogin
+    
+    Validasi -- "Benar" --> CekRole{"Pengecekan Role Pengguna?"}
+    
+    %% Alur Admin
+    CekRole -- "Admin" --> DashAdmin["Masuk Dashboard Admin"]
+    DashAdmin --> MenuAdmin{"Pilih Menu Kelola"}
+    MenuAdmin -- "Santri" --> A1["Kelola Data Santri (Tambah/Edit/Hapus)"]
+    MenuAdmin -- "Pengguna" --> A2["Kelola Akun Sistem"]
+    MenuAdmin -- "Konten Web" --> A3["Kelola Berita & Galeri"]
+    
+    %% Alur Bendahara
+    CekRole -- "Bendahara" --> DashBendahara["Masuk Dashboard Bendahara"]
+    DashBendahara --> MenuBendahara{"Pilih Menu Keuangan"}
+    MenuBendahara -- "Syahriyah" --> B1["Buka Halaman Pembayaran"]
+    B1 --> B2["Cari Santri & Centang Bulan Bayar"]
+    B2 --> B3["Simpan Konfirmasi Pembayaran"]
+    
+    %% Penyelesaian
+    A1 --> SelesaiAktifitas["Simpan Data & Kembali"]
+    A2 --> SelesaiAktifitas
+    A3 --> SelesaiAktifitas
+    B3 --> SelesaiAktifitas
+    
+    TampilInfo --> LogoutNode["Logout / Tutup Aplikasi"]
+    SelesaiAktifitas --> LogoutNode
+    LogoutNode --> End(["Selesai"])
+    </div>
+</body>
+</html>
